@@ -2,7 +2,7 @@ import Link from "next/link"
 import React from "react"
 import { Button } from "../ui/button"
 import { FaXTwitter } from "react-icons/fa6";
-import LoginForm from "./LoginForm";
+import LoginForm from "./loginForm";
 
 export default function Navbar () {
  return  (
