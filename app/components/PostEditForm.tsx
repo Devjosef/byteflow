@@ -2,6 +2,11 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { Post } from '@/types';
+
+interface PostEditFormProps {
+  post: Post;
+}
 
 const schema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -13,9 +18,10 @@ interface FormData {
   content: string;
 }
 
-const PostEditForm: React.FC<{}> = () => {
+const PostEditForm: React.FC<PostEditFormProps> = ({ post }) => {
   const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
+    defaultValues: post
   });
 
   const onSubmit = (data: FormData) => {
@@ -54,6 +60,7 @@ const PostEditForm: React.FC<{}> = () => {
 };
 
 export default PostEditForm;
+
 
 
 

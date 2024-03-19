@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchUserData, initSupabaseClient } from '@/lib/supabaseClient';
+import { fetchUserData, initSupabaseClient } from 'lib/supabaseClient'
 
 const ProfilePage: React.FC = () => {
   const [user, setUser] = useState<any>(null);

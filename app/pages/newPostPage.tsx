@@ -1,5 +1,5 @@
 import React from 'react';
-import PostForm from '../components/postForm';
+import PostForm from '../components/PostForm';
 
 const NewPostPage: React.FC = () => (
   <div>
