@@ -1,0 +1,44 @@
+import { useEffect, useState } from 'react';
+import { Comment } from '@/types';
+import { useAuth } from '@/hooks';
+import { supabase } from '@/lib';
+
+const CommentListWithFeatures: React.FC = () => {
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const { data, error } = await supabase
+          .from<Comment>('comments')
+          .select('*')
+          .order('created_at', { ascending: false });
+        if (error) throw error;
+        setComments(data || []);
+      } catch (error: any) {
+        setError(error.message);
+      }
+    };
+    fetchComments();
+  }, []);
+
+  return (
+    <div>
+      {error && <p>Error: {error}</p>}
+      <ul>
+        {comments.map((comment) => (
+          <li key={comment.id}>
+            <p>{comment.content}</p>
+            <p>By: {comment.author}</p>
+            {/* Include like button here */}
+          </li>
+        ))}
+      </ul>
+      {/* Include pagination, sorting, and search functionality here */}
+    </div>
+  );
+};
+
+export default CommentListWithFeatures;
