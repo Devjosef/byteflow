@@ -1,3 +1,4 @@
+A few more adds. fixing errors
 ## Project Summary:
 
 The project is a full-stack blog application built using Supabase, Next.js, and Tailwind CSS. It allows users to create, read, update, and delete blog posts, as well as authenticate with Supabase authentication service. The application focuses on simplicity, user-friendliness, and accessibility, with plans to integrate features such as warm background colors for improved readability, especially for individuals with dyslexia. Adding more features soon. and links
